@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="text-align: center;">
+    <!-- <h1>This is secure Page</h1> -->
+          {% block content %}
+          Welcome to {{request.session.user_email}}
+          {% endblock content %}                   
+          <div align="center">
+          <h1 align="center">CASE DETAILS</h1>          
+              <table border="1" align="center">
+                  <tr>
+                      <th>ID</th>
+                      <th>NAME</th>
+                      <th>ADVOCATE</th>
+                      <th>MOBILE</th>
+                      <th>EMAIL</th>
+                  </tr>
+                  <tr>
+                  </tr>
+              <!-- {% if user.is_authenticated %} -->
+              <!-- {% if request.session.blogs %} -->
+                {% for sts in request.session.blogs %}
+                    <tr>
+                    <td>{{sts.id}}</td><td>{{sts.Name}}</td><td>{{sts.Advocate}}</td> <td>{{sts.Mobile}}</td><td>{{sts.Email}}</td>
+                    </tr>
+                {% endfor %}
+              <!-- {% else %}
+                <tr>
+                <th colspan="5">There is no records</th>
+                </tr>
+              {% endif %} -->
+            </table>
+            <h1>Add Case Details</h1>
+            <p>
+            <a href="create/">Add Case Details</a>
+            </p>            
+            <a href="{% url 'logout_page' %}">Logout</a>            
+            </div>            
+    </div>
+</body>
+</html>

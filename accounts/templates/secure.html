@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="text-align: center;">
+        <h1>This is secure Page</h1>
+          {% block content %}
+          Welcome to {{request.session.user_email}}
+          {% endblock content %}    
+        </div>
+        <div style="text-align: center;">
+        <a href="{% url 'show_blogs' %}">SHOW CASES</a>&nbsp;&nbsp;&nbsp;
+        <a href="{% url 'create-blog' %}">CREATE CASE</a>       
+        <br/> <br/>    
+        {{request.session.user_email}}
+            <br/>
+        </request>
+        <a href="{% url 'logout_page' %}">Logout</a>            
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+run this in django project terminal
+-----------------------------------
+python manage.py migrate
+
+Database Creation
+-----------------
+create database project;
+
+Enter into Database
+-------------------
+use project;
+How to create a table
+---------------------
+create table blog(id bigint primary key auto_increment,
+name varchar(200),
+advocate varchar(200),
+mobile bigint,
+email varchar(254),
+caseno varchar(50),
+caseyear varchar(500),
+casetype varchar(200),
+courtname varchar(200),
+courtarea varchar(300),
+mobile_updates tinyint,
+emailid varchar(200),
+created_by varchar(200),
+created_date datetime,
+modified_by varchar(200),
+modified_date datetime,
+user_email varchar(200));
+Query OK, 0 rows affected (0.02 sec)

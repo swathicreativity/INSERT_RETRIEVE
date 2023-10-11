@@ -1,0 +1,50 @@
+def signin(request):
+    return render(request,"signin.html") 
+
+def signin_verification(request):
+     if request.method=="POST":
+        user_email=request.POST["email"]
+        username=request.POST["email"]
+        request.session["user_email"]=user_email
+        request.session["username"]=username
+        if User.objects.filter(email=user_email).exists():
+                send_otp(request)
+                return render(request,'otp.html',{"email":user_email})        
+        else:
+            nameuser=User(username=request.session['username'],email=request.session['user_email'])
+            nameuser.save()
+            send_otp(request)
+            return render(request,'otp.html',{"email":user_email})                        
+     else:
+                return HttpResponse("No Page")
+
+def send_otp(request):
+    s=""
+    for x in range(0,6):
+        s+=str(random.randint(0,9))
+    request.session["otp"]=s
+    send_mail("otp for sign up",s,'onlinetrainingnumber1@gmail.com',[request.session['user_email']],fail_silently=False)
+    return render(request,"otp.html")
+
+def  otp_verification(request):
+    if  request.method=='POST':
+        otp_=request.POST.get("otp")
+    if otp_ == request.session["otp"]:
+        return render(request,'secure.html')
+    else:
+        messages.error(request,"otp doesn't match")
+        return render(request,'otp.html')
+
+def logout_page(request):
+    logout(request)
+    return redirect('http://localhost:8000/')
+
+def secure(request):
+    user_email = request.session['user_email']
+    request.session["user_email"]=user_email
+    if request.user.is_authenticated:
+        #return render(request, 'secure.html')
+        return HttpResponseRedirect('secure')
+        #return render(request,'secure.html',{"email":email})
+    return render(request,'http://localhost:8000/')
+    #return redirect('http://localhost:8000/')

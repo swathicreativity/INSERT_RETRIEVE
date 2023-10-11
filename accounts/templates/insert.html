@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Case</title>
+</head>
+<style>
+    table {
+        border: 8px outset;
+        border-radius: 10px;
+        border-spacing: 10px;
+        padding: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    th,
+    td {
+        padding: 5px;
+    }
+</style>
+
+<body>   
+    <form method="POST">
+        {% csrf_token %}
+        <!-- <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" 
+            name="Name"
+            placeholder="Enter Name">
+          </div> -->
+        <table style="width:50%" align="center">            
+            <caption>
+            <h2 style="text-align:center"> Enter Details of Case </h2>
+            </caption>
+            <tr>
+                <td>Name</td>
+                <td><input type="text" placeholder="Enter Name" name="Name" required/></td>
+            </tr>
+            <tr>
+                <td>Advocate</td>
+                <td><input type="text" placeholder="Enter Advocate" name="Advocate" required/> </td>
+            </tr>
+            <tr>
+                <td>Mobile</td>
+                <td><input type="number" placeholder="Enter Mobile" name="Mobile" required/> </td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="email" placeholder="Enter Email" name="Email" required/> </td>
+            </tr>
+            <tr>
+                <td>Case No</td>
+                <td><input type="text" placeholder="Enter CaseNo" name="CaseNo" required/> </td>
+            </tr>
+            <tr>
+                <td>Case Year</td>
+                <td><input type="number" placeholder="Enter CaseYear" name="CaseYear" required /> </td>
+            </tr>
+            <tr>
+                <td>Case Type</td>
+                <td><input type="text" placeholder="Enter CaseType" name="CaseType" required/> </td>
+            </tr>
+            <tr>
+                <td>Court Name</td>
+                <td><input type="text" placeholder="Enter CourtName" name="CourtName" required/> </td>
+            </tr>
+            <tr>
+                <td>Court Area</td>
+                <td><textarea placeholder="Enter CourtArea" name="CourtArea" required></textarea> </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" class="btn btn-success"> </td>
+            </tr>
+        </table>       
+    </form>
+</body>
+
+</html>
